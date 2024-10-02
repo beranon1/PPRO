@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+
+<a th:href="@{'/edit/' + ${index}}">
+    <span>EDIT</span><br>
+</a>
+<a th:href="@{'/delete/' + ${index}}">
+    <span>DELETE</span>
+</a>
+
+<table>
+    <tr>
+        <td>License Plate Number :</td>
+        <td th:text="${car.spz}"></td>
+    </tr>
+    <tr>
+        <td>Color :</td>
+        <td th:text="${car.color}"></td>
+    </tr>
+    <tr>
+        <td>Tank Volume :</td>
+        <td th:text="${car.tankVolume}"></td>
+    </tr>
+    <tr>
+        <td>Number of Seats :</td>
+        <td th:text="${car.numberOfSeats}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
