@@ -52,7 +52,9 @@ public class CarController {
     @GetMapping("/edit/{index}")
     public String edit(Model model, @PathVariable int index){
         if (index > -1 && index < cars.size()){
-        model.addAttribute("car", new Car());
+            Car car = cars.get(index);
+            car.setId(index);
+        model.addAttribute("car", car);
         model.addAttribute("edit", true);
         return "edit";
         }
@@ -62,7 +64,7 @@ public class CarController {
     @PostMapping("/save")
     public String save(@ModelAttribute Car car){
         if (car.getId() > -1){
-            cars.remove(car);
+            cars.remove(car.getId());
         }
         cars.add(car);
         return "redirect:/";
