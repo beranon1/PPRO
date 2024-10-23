@@ -1,10 +1,22 @@
 package com.example.ppro_projekt.model;
 
+import jakarta.validation.constraints.*;
+
 public class Car {
     private int id = -1;
+
+    @Size(min = 7, max = 7)
     private String spz;
+
+    @NotBlank
     private String color;
+
+    @Min(value = 30)
+    @Max(value = 100)
     private float tankVolume;
+
+    @Min(value = 2)
+    @Max(value = 10)
     private int numberOfSeats;
 
     public Car(String spz, String color, float tankVolume, int numberOfSeats) {
