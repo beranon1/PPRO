@@ -6,10 +6,10 @@
 </head>
 <body>
 
-<a th:href="@{'/cars/edit/' + ${index}}">
+<a th:href="@{'/cars/edit/' + ${car.id}}">
     <span>EDIT</span><br>
 </a>
-<a th:href="@{'/cars/delete/' + ${index}}">
+<a th:href="@{'/cars/delete/' + ${car.id}}">
     <span>DELETE</span>
 </a>
 

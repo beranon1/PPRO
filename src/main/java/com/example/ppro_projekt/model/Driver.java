@@ -1,10 +1,16 @@
 package com.example.ppro_projekt.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+
+@Entity
+@Table(name = "drivers")
 public class Driver {
 
-    private int id = -1;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id = -1;
 
     @NotBlank(message = "Name is required")
     @Size(min = 5, message = "Name must be at least 5 characters long")
@@ -19,7 +25,7 @@ public class Driver {
     private int salary;
 
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -35,7 +41,7 @@ public class Driver {
         this.salary = salary;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
