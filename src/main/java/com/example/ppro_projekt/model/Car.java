@@ -25,6 +25,10 @@ public class Car {
     @Max(value = 10)
     private int numberOfSeats;
 
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
+
     public Car(String spz, String color, float tankVolume, int numberOfSeats) {
         this.spz = spz;
         this.color = color;
@@ -73,5 +77,13 @@ public class Car {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Driver getDriver() {
+        return driver;
     }
 }

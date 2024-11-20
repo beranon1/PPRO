@@ -3,6 +3,8 @@ package com.example.ppro_projekt.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "drivers")
@@ -24,6 +26,8 @@ public class Driver {
     @Max(value = 80000, message = "Salary must not exceed 80 000")
     private int salary;
 
+    @OneToMany(mappedBy = "driver")
+    private List<Car> cars;
 
     public void setId(long id) {
         this.id = id;
@@ -55,5 +59,13 @@ public class Driver {
 
     public int getSalary() {
         return salary;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
     }
 }
