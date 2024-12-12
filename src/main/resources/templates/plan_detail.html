@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<table>
+    <tr>
+        <td>Název :</td>
+        <td th:text="${plan.nazev}"></td>
+    </tr>
+    <tr>
+        <td>Popis :</td>
+        <td th:text="${plan.popis}"></td>
+    </tr>
+    <tr>
+        <td>Zaměření :</td>
+        <td th:text="${plan.zamereni}"></td>
+    </tr>
+    <tr>
+        <td>Doba trvání :</td>
+        <td th:text="${plan.dobaTrvani}"></td>
+    </tr>
+    <tr>
+        <td>Seznam cviků :</td>
+        <td>
+            <a th:href="@{'/cviks/detail/{id}'(id=${plan.cviks[0].id})}" th:text="${plan.cviks[0].nazev}" class="cviky"></a>
+        </td>
+    </tr>
+    <tr th:each="cvik, iterStat : ${plan.cviks}" th:if="${iterStat.index > 0}">
+        <td></td>
+        <td>
+            <a th:href="@{'/cviks/detail/{id}'(id=${cvik.id})}" th:text="${cvik.nazev}" class="cviky"></a>
+        </td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/plans/edit/' + ${plan.id}}">Upravit</a></td>
+        <td><a th:href="@{'/plans/delete/' + ${plan.id}}">Smazat</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/plans/'}">Zpět na seznam plánů</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

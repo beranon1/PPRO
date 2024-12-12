@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${edit} ? 'Edit cvik' : 'New cvik'"></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<form th:action="@{'/cviks/save'}" method="post" th:object="${cvik}">
+    <input type="hidden" th:field="*{id}">
+    Název: <input type="text" th:field="*{nazev}">
+    <span th:if="${#fields.hasErrors('nazev')}" th:errors="*{nazev}"></span>
+    Popis: <input type="text" th:field="*{popis}">
+    <span th:if="${#fields.hasErrors('popis')}" th:errors="*{popis}"></span>
+    Zaměření: <input type="text" th:field="*{zamereni}">
+    <span th:if="${#fields.hasErrors('zamereni')}" th:errors="*{zamereni}"></span>
+    Počet opakování: <input type="text" th:field="*{pocetOpakovani}">
+    <span th:if="${#fields.hasErrors('pocetOpakovani')}" th:errors="*{pocetOpakovani}"></span>
+    Plán: <select th:field="*{plan}">
+    <option th:each="plan:${plans}" th:text="${plan.nazev}" th:value="${plan.id}"></option>
+        </select>
+    <button type="submit">Uložit</button>
+</form>
+
+<a th:href="@{'/cviks/'}">Zpět na seznam cviků</a>
+</body>
+</html>

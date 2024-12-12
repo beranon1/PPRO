@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>Název :</td>
+        <td th:text="${cvik.nazev}"></td>
+    </tr>
+    <tr>
+        <td>Popis :</td>
+        <td th:text="${cvik.popis}"></td>
+    </tr>
+    <tr>
+        <td>Zaměření :</td>
+        <td th:text="${cvik.zamereni}"></td>
+    </tr>
+    <tr>
+        <td>Počet opakování :</td>
+        <td th:text="${cvik.pocetOpakovani}"></td>
+    </tr>
+    <tr>
+        <td>Plán :</td>
+        <td><a th:href="@{'/plans/detail/{id}'(id=${cvik.plan.id})}" th:text="${cvik.plan.nazev}" class="plan"></a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/cviks/edit/' + ${cvik.id}}">Upravit</a></td>
+        <td><a th:href="@{'/cviks/delete/' + ${cvik.id}}">Smazat</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/cviks/'}">Zpět na seznam cviků</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

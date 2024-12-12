@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all cviks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<span th:each="cvik: ${cviks}">
+    <a th:href="@{'/cviks/detail/' + ${cvik.id}}">
+        <span th:text="${cvik.nazev}"></span>
+    </a>
+</span>
+<a th:href="@{'/cviks/create'}">
+    <span>VYTVOŘIT</span>
+</a>
+<a th:href="@{'/'}">
+    <span> ZPĚT</span>
+</a>
+
+
+</body>
+</html>
