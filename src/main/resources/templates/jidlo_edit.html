@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${edit} ? 'Edit jidlo' : 'New jidlo'"></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<form th:action="@{'/jidlos/save'}" method="post" th:object="${jidlo}">
+  <input type="hidden" th:field="*{id}">
+  Název: <input type="text" th:field="*{nazev}">
+  <span th:if="${#fields.hasErrors('nazev')}" th:errors="*{nazev}"></span>
+  Množství: <input type="text" th:field="*{mnozstvi}">
+  <span th:if="${#fields.hasErrors('mnozstvi')}" th:errors="*{mnozstvi}"></span>
+  Množství bílkovin: <input type="text" th:field="*{bilkoviny}">
+  <span th:if="${#fields.hasErrors('bilkoviny')}" th:errors="*{bilkoviny}"></span>
+  Množství sacharidů: <input type="text" th:field="*{sachardy}">
+  <span th:if="${#fields.hasErrors('sachardy')}" th:errors="*{sachardy}"></span>
+  Plán: <select th:field="*{plan}">
+  <option th:each="plan:${plans}" th:text="${plan.nazev}" th:value="${plan.id}"></option>
+</select>
+  <button type="submit">Uložit</button>
+</form>
+
+<a th:href="@{'/jidlos/'}">Zpět na seznam jídel</a>
+</body>
+</html>

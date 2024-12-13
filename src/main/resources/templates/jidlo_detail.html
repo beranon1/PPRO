@@ -1,0 +1,40 @@
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Detail</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<table>
+  <tr>
+    <td>Název :</td>
+    <td th:text="${jidlo.nazev}"></td>
+  </tr>
+  <tr>
+    <td>Množství :</td>
+    <td th:text="${jidlo.mnozstvi}"></td>
+  </tr>
+  <tr>
+    <td>Množství bílkovin :</td>
+    <td th:text="${jidlo.bilkoviny}"></td>
+  </tr>
+  <tr>
+    <td>Množství sacharidů :</td>
+    <td th:text="${jidlo.sachardy}"></td>
+  </tr>
+  <tr>
+    <td>Plán :</td>
+    <td><a th:href="@{'/plans/detail/{id}'(id=${jidlo.plan.id})}" th:text="${jidlo.plan.nazev}" class="plan"></a></td>
+  </tr>
+  <tr>
+    <td><a th:href="@{'/jidlos/edit/' + ${jidlo.id}}">Upravit</a></td>
+    <td><a th:href="@{'/jidlos/delete/' + ${jidlo.id}}">Smazat</a></td>
+  </tr>
+  <tr>
+    <td><a th:href="@{'/jidlos/'}">Zpět na seznam jídel</a></td>
+  </tr>
+</table>
+
+</body>
+</html>

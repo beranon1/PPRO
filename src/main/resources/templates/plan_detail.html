@@ -23,13 +23,16 @@
         <td>Doba trvání :</td>
         <td th:text="${plan.dobaTrvani}"></td>
     </tr>
-    <tr>
+    <tr th:if="${#lists.isEmpty(plan.cviks)}">
+        <td >Žádné cviky nejsou k dispozici:</td>
+    </tr>
+    <tr th:if="${!#lists.isEmpty(plan.cviks)}">
         <td>Seznam cviků :</td>
         <td>
             <a th:href="@{'/cviks/detail/{id}'(id=${plan.cviks[0].id})}" th:text="${plan.cviks[0].nazev}" class="cviky"></a>
         </td>
     </tr>
-    <tr th:each="cvik, iterStat : ${plan.cviks}" th:if="${iterStat.index > 0}">
+    <tr th:each="cvik, iterStat : ${plan.cviks}" th:if="${!#lists.isEmpty(plan.cviks) and iterStat.index > 0}">
         <td></td>
         <td>
             <a th:href="@{'/cviks/detail/{id}'(id=${cvik.id})}" th:text="${cvik.nazev}" class="cviky"></a>
@@ -43,6 +46,7 @@
         <td><a th:href="@{'/plans/'}">Zpět na seznam plánů</a></td>
     </tr>
 </table>
+
 
 </body>
 </html>
