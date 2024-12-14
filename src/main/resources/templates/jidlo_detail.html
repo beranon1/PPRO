@@ -24,8 +24,8 @@
     <td th:text="${jidlo.sachardy}"></td>
   </tr>
   <tr>
-    <td>Plán :</td>
-    <td><a th:href="@{'/plans/detail/{id}'(id=${jidlo.plan.id})}" th:text="${jidlo.plan.nazev}" class="plan"></a></td>
+    <td>Jídelníček :</td>
+    <td><a th:href="@{'/jidelniceks/detail/{id}'(id=${jidlo.jidelnicek.id})}" th:text="${jidlo.jidelnicek.nazev}" class="plan"></a></td>
   </tr>
   <tr>
     <td><a th:href="@{'/jidlos/edit/' + ${jidlo.id}}">Upravit</a></td>

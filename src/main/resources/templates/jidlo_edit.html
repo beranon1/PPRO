@@ -17,8 +17,8 @@
   <span th:if="${#fields.hasErrors('bilkoviny')}" th:errors="*{bilkoviny}"></span>
   Množství sacharidů: <input type="text" th:field="*{sachardy}">
   <span th:if="${#fields.hasErrors('sachardy')}" th:errors="*{sachardy}"></span>
-  Plán: <select th:field="*{plan}">
-  <option th:each="plan:${plans}" th:text="${plan.nazev}" th:value="${plan.id}"></option>
+  Jídelníček: <select th:field="*{jidelnicek}">
+  <option th:each="jidelnicek:${jidelniceks}" th:text="${jidelnicek.nazev}" th:value="${jidelnicek.id}"></option>
 </select>
   <button type="submit">Uložit</button>
 </form>

@@ -38,6 +38,18 @@
             <a th:href="@{'/cviks/detail/{id}'(id=${cvik.id})}" th:text="${cvik.nazev}" class="cviky"></a>
         </td>
     </tr>
+    <tr th:if="${!#lists.isEmpty(plan.jidelniceks)}">
+        <td>Seznam jídelníčků :</td>
+        <td>
+            <a th:href="@{'/jidelniceks/detail/{id}'(id=${plan.jidelniceks[0].id})}" th:text="${plan.jidelniceks[0].nazev}" class="cviky"></a>
+        </td>
+    </tr>
+    <tr th:each="jidelnicek, iterStat : ${plan.jidelniceks}" th:if="${!#lists.isEmpty(plan.jidelniceks) and iterStat.index > 0}">
+        <td></td>
+        <td>
+            <a th:href="@{'/jidelniceks/detail/{id}'(id=${jidelnicek.id})}" th:text="${jidelnicek.nazev}" class="cviky"></a>
+        </td>
+    </tr>
     <tr>
         <td><a th:href="@{'/plans/edit/' + ${plan.id}}">Upravit</a></td>
         <td><a th:href="@{'/plans/delete/' + ${plan.id}}">Smazat</a></td>

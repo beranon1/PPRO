@@ -27,6 +27,9 @@ public class Plan {
     @OneToMany(mappedBy = "plan")
     private List<Cvik> cviks;
 
+    @OneToMany(mappedBy = "plan")
+    private List<Jidelnicek> jidelniceks;
+
     public void setId(long id) {
         this.id = id;
     }
@@ -73,5 +76,13 @@ public class Plan {
 
     public void setDobaTrvani(int dobaTrvani) {
         this.dobaTrvani = dobaTrvani;
+    }
+
+    public List<Jidelnicek> getJidelniceks() {
+        return jidelniceks;
+    }
+
+    public void setJidelniceks(List<Jidelnicek> jidelniceks) {
+        this.jidelniceks = jidelniceks;
     }
 }

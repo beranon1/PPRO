@@ -1,7 +1,7 @@
 package com.example.ppro_projekt.Controller;
 import com.example.ppro_projekt.model.Jidlo;
+import com.example.ppro_projekt.service.JidelnicekService;
 import com.example.ppro_projekt.service.JidloService;
-import com.example.ppro_projekt.service.PlanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/jidlos")
 public class JidloController {
 
+    private JidelnicekService jidelnicekService;
     private JidloService jidloService;
-    private PlanService planService;
 
     @Autowired
-    public JidloController(JidloService jidloService, PlanService planService) {
+    public JidloController(JidloService jidloService, JidelnicekService jidelnicekService) {
         this.jidloService = jidloService;
-        this.planService = planService;
+        this.jidelnicekService = jidelnicekService;
     }
 
     @GetMapping("/")
@@ -51,7 +51,7 @@ public class JidloController {
     public String create(Model model){
         model.addAttribute("jidlo", new Jidlo());
         model.addAttribute("edit", false);
-        model.addAttribute("plans", planService.getAllPlans());
+        model.addAttribute("jidelniceks", jidelnicekService.getAllJidelniceks());
         return "jidlo_edit";
     }
 
@@ -62,7 +62,7 @@ public class JidloController {
             jidlo.setId(id);
             model.addAttribute("jidlo", jidlo);
             model.addAttribute("edit", true);
-            model.addAttribute("plans", planService.getAllPlans());
+            model.addAttribute("jidelniceks", jidelnicekService.getAllJidelniceks());
             return "jidlo_edit";
         }
         return "redirect:/jidlos/";
@@ -72,7 +72,7 @@ public class JidloController {
     public String save(@Valid Jidlo jidlo, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("edit", true);
-            model.addAttribute("plans", planService.getAllPlans());
+            model.addAttribute("jidelniceks", jidelnicekService.getAllJidelniceks());
             return "jidlo_edit";
         }
         jidloService.saveJidlo(jidlo);

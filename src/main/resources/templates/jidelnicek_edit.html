@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${edit} ? 'Edit cvik' : 'New cvik'"></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<form th:action="@{'/jidelniceks/save'}" method="post" th:object="${jidelnicek}">
+    <input type="hidden" th:field="*{id}">
+    Název: <input type="text" th:field="*{nazev}">
+    <span th:if="${#fields.hasErrors('nazev')}" th:errors="*{nazev}"></span>
+    Zaměření: <input type="text" th:field="*{zamereni}">
+    <span th:if="${#fields.hasErrors('zamereni')}" th:errors="*{zamereni}"></span>
+    Doba trvání: <input type="text" th:field="*{obdobi}">
+    <span th:if="${#fields.hasErrors('obdobi')}" th:errors="*{obdobi}"></span>
+    Plán: <select th:field="*{plan}">
+    <option th:each="plan:${plans}" th:text="${plan.nazev}" th:value="${plan.id}"></option>
+</select>
+    <button type="submit">Uložit</button>
+</form>
+<a th:href="@{'/jidelniceks/'}">Zpět na seznam jídelníčků</a>
+
+
+</body>
+</html>

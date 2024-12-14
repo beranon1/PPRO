@@ -16,8 +16,8 @@ public class Jidlo {
     private int sachardy;
 
     @ManyToOne
-    @JoinColumn(name = "plan_id")
-    private Plan plan;
+    @JoinColumn(name = "jidelnicek_id")
+    private Jidelnicek jidelnicek;
 
     public Jidlo(long id, String nazev, int mnozstvi, int bilkoviny, int sachardy) {
         this.id = id;
@@ -71,11 +71,11 @@ public class Jidlo {
         this.sachardy = sachardy;
     }
 
-    public Plan getPlan() {
-        return plan;
+    public Jidelnicek getJidelnicek() {
+        return jidelnicek;
     }
 
-    public void setPlan(Plan plan) {
-        this.plan = plan;
+    public void setJidelnicek(Jidelnicek jidelnicek) {
+        this.jidelnicek = jidelnicek;
     }
 }

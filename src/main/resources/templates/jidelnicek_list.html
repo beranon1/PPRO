@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all jidelniceks</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<span th:each="jidelnicek: ${jidelniceks}">
+        <a th:href="@{'/jidelniceks/detail/' + ${jidelnicek.id}}">
+            <span th:text="${jidelnicek.nazev}"></span>
+        </a>
+    </span>
+<a th:href="@{'/jidelniceks/create'}">
+    <span>VYTVOŘIT</span>
+</a>
+<a th:href="@{'/'}">
+    <span> ZPĚT</span>
+</a>
+
+
+</body>
+</html>

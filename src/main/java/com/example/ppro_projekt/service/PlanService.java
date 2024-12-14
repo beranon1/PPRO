@@ -11,6 +11,6 @@ public interface PlanService {
     List<Plan> getAllPlans();
     Plan getPlanById(long id);
     void deletePlanById(long id);
-    void savePlan(Plan cvik);
+    void savePlan(Plan plan);
 
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<table>
+    <tr>
+        <td>Název :</td>
+        <td th:text="${jidelnicek.nazev}"></td>
+    </tr>
+    <tr>
+        <td>Zaměření :</td>
+        <td th:text="${jidelnicek.zamereni}"></td>
+    </tr>
+    <tr>
+        <td>Doba trvání :</td>
+        <td th:text="${jidelnicek.obdobi}"></td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(jidelnicek.jidlos)}">
+        <td >Žádná jídla nejsou k dispozici:</td>
+    </tr>
+    <tr th:if="${!#lists.isEmpty(jidelnicek.jidlos)}">
+        <td>Seznam jídel :</td>
+        <td>
+            <a th:href="@{'/jidlos/detail/{id}'(id=${jidelnicek.jidlos[0].id})}" th:text="${jidelnicek.jidlos[0].nazev}" class="cviky"></a>
+        </td>
+    </tr>
+    <tr th:each="jidlo, iterStat : ${jidelnicek.jidlos}" th:if="${!#lists.isEmpty(jidelnicek.jidlos) and iterStat.index > 0}">
+        <td></td>
+        <td>
+            <a th:href="@{'/jidlos/detail/{id}'(id=${jidlo.id})}" th:text="${jidlo.nazev}" class="cviky"></a>
+        </td>
+    </tr>
+    <tr>
+        <td>Plán :</td>
+        <td><a th:href="@{'/plans/detail/{id}'(id=${jidelnicek.plan.id})}" th:text="${jidelnicek.plan.nazev}" class="plan"></a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/jidelniceks/edit/' + ${jidelnicek.id}}">Upravit</a></td>
+        <td><a th:href="@{'/jidelniceks/delete/' + ${jidelnicek.id}}">Smazat</a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{'/jidelniceks/'}">Zpět na seznam jídelníčků</a></td>
+    </tr>
+</table>
+
+
+</body>
+</html>
