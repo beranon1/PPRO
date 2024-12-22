@@ -24,10 +24,10 @@ public class Plan {
 
     private int dobaTrvani;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Cvik> cviks;
 
-    @OneToMany(mappedBy = "plan")
+    @OneToMany(mappedBy = "plan", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Jidelnicek> jidelniceks;
 
     public void setId(long id) {

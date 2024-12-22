@@ -27,7 +27,7 @@
     <td>Jídelníček :</td>
     <td><a th:href="@{'/jidelniceks/detail/{id}'(id=${jidlo.jidelnicek.id})}" th:text="${jidlo.jidelnicek.nazev}" class="plan"></a></td>
   </tr>
-  <tr>
+  <tr th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
     <td><a th:href="@{'/jidlos/edit/' + ${jidlo.id}}">Upravit</a></td>
     <td><a th:href="@{'/jidlos/delete/' + ${jidlo.id}}">Smazat</a></td>
   </tr>

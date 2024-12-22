@@ -28,7 +28,7 @@
         <td>Plán :</td>
         <td><a th:href="@{'/plans/detail/{id}'(id=${cvik.plan.id})}" th:text="${cvik.plan.nazev}" class="plan"></a></td>
     </tr>
-    <tr>
+    <tr th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
         <td><a th:href="@{'/cviks/edit/' + ${cvik.id}}">Upravit</a></td>
         <td><a th:href="@{'/cviks/delete/' + ${cvik.id}}">Smazat</a></td>
     </tr>

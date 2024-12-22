@@ -50,7 +50,7 @@
             <a th:href="@{'/jidelniceks/detail/{id}'(id=${jidelnicek.id})}" th:text="${jidelnicek.nazev}" class="cviky"></a>
         </td>
     </tr>
-    <tr>
+    <tr th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
         <td><a th:href="@{'/plans/edit/' + ${plan.id}}">Upravit</a></td>
         <td><a th:href="@{'/plans/delete/' + ${plan.id}}">Smazat</a></td>
     </tr>

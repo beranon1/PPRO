@@ -6,19 +6,35 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header>
+    <div class="user-menu">
+        <button id="userButton">
+            <span th:text="${#authentication.name}">Uživatel</span>
+        </button>
+        <div id="logoutMenu" class="dropdown hidden">
+            <a th:href="@{'/logout'}">Odhlášení</a>
+        </div>
+    </div>
+</header>
 
 <span th:each="cvik: ${cviks}">
     <a th:href="@{'/cviks/detail/' + ${cvik.id}}">
         <span th:text="${cvik.nazev}"></span>
     </a>
 </span>
-<a th:href="@{'/cviks/create'}">
+<a th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{'/cviks/create'}">
     <span>VYTVOŘIT</span>
 </a>
 <a th:href="@{'/'}">
     <span> ZPĚT</span>
 </a>
 
-
+<script>
+    const userButton = document.getElementById('userButton');
+    const logoutMenu = document.getElementById('logoutMenu');
+    userButton.addEventListener('click', () => {
+        logoutMenu.classList.toggle('hidden');
+    });
+</script>
 </body>
 </html>

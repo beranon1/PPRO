@@ -4,13 +4,70 @@ body, h1, ul, li, a, table, td, input, select, button {
     padding: 0;
     box-sizing: border-box;
 }
+/* Hlavička */
+header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Uživatelské menu */
+.user-menu {
+    position: relative;
+}
+
+.user-menu button {
+    color: #0066cc;
+    background-color: #9ecbff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.user-menu button:hover {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px 15px;
+    color: #0066cc;
+    background-color: #9ecbff;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.dropdown a:hover {
+    background-color: #0066cc;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
 
 /* Tělo stránky */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
-    padding: 20px;
+    padding-right: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,6 +77,7 @@ body {
 h1 {
     font-size: 2.5em;
     margin-bottom: 1rem;
+    margin-top: 2rem;
     color: #444;
     text-align: center;
 }

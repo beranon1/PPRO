@@ -6,13 +6,33 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header>
+    <div class="user-menu">
+        <button id="userButton">
+            <span th:text="${#authentication.name}">Uživatel</span>
+        </button>
+        <div id="logoutMenu" class="dropdown hidden">
+            <a th:href="@{'/logout'}">Odhlášení</a>
+        </div>
+    </div>
+</header>
 
-<h1>Fitness plánovač</h1>
-<a th:href="@{'/cviks/'}">Seznam cviků</a><br>
-<a th:href="@{'/plans/'}">Seznam plánů</a><br>
-<a th:href="@{'/jidlos/'}">Seznam jídel</a><br>
-<a th:href="@{'/jidelniceks/'}">Seznam jídelníčků</a><br>
-<a th:href="@{'/logout'}">Odhlášení</a>
+<main>
+    <h1>Fitness plánovač</h1>
+    <nav>
+        <a th:href="@{'/cviks/'}">Seznam cviků</a>
+        <a th:href="@{'/plans/'}">Seznam plánů</a>
+        <a th:href="@{'/jidlos/'}">Seznam jídel</a>
+        <a th:href="@{'/jidelniceks/'}">Seznam jídelníčků</a>
+    </nav>
+</main>
 
+<script>
+    const userButton = document.getElementById('userButton');
+    const logoutMenu = document.getElementById('logoutMenu');
+    userButton.addEventListener('click', () => {
+        logoutMenu.classList.toggle('hidden');
+    });
+</script>
 </body>
 </html>

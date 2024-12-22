@@ -7,6 +7,7 @@ import com.example.ppro_projekt.service.CvikService;
 import com.example.ppro_projekt.service.PlanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,12 +42,15 @@ public class CvikController {
         return "redirect:/cviks/";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
     public String delete(Model model, @PathVariable long id){
         cvikService.deleteCvikById(id);
         return "redirect:/cviks/";
     }
 
+
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("cvik", new Cvik());
@@ -55,6 +59,7 @@ public class CvikController {
         return "cvik_edit";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/edit/{id}")
     public String edit(Model model, @PathVariable long id){
         Cvik cvik = cvikService.getCvikById(id);
