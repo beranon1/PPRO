@@ -44,7 +44,7 @@ public class CvikController {
 
     @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/delete/{id}")
-    public String delete(Model model, @PathVariable long id){
+    public String delete(@PathVariable long id){
         cvikService.deleteCvikById(id);
         return "redirect:/cviks/";
     }

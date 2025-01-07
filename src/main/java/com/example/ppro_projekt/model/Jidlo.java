@@ -1,6 +1,8 @@
 package com.example.ppro_projekt.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="jidlos")
@@ -10,9 +12,14 @@ public class Jidlo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotBlank(message = "Název musí být vyplněn")
+    @Size(min = 1, max = 50)
     private String nazev;
+
     private int mnozstvi;
+
     private int bilkoviny;
+
     private int sachardy;
 
     @ManyToOne

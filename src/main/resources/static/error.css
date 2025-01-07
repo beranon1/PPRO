@@ -1,0 +1,41 @@
+/* Obecné styly pro obě stránky */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+    padding: 50px;
+}
+
+h1 {
+    font-size: 100px;
+    color: #e74c3c;
+}
+
+p {
+    font-size: 24px;
+}
+
+.container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: inline-block;
+    margin-top: 50px;
+}
+
+/* Tlačítko pro zpět na domovskou stránku */
+.btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}

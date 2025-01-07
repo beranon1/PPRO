@@ -41,5 +41,4 @@ public class CvikServiceImpl implements CvikService {
         cvikRepository.save(cvik);
     }
 
-
 }

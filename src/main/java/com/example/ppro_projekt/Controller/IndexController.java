@@ -1,6 +1,7 @@
 package com.example.ppro_projekt.Controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -11,10 +12,15 @@ public class IndexController {
     public String index() {
       return "index";
   }
+
   @GetMapping("/403")
-  @ResponseBody
   public String forbidden() {
-    return "<h1>Access Denied</h1>";
+    return "403";
+  }
+
+  @ExceptionHandler(Exception.class)
+  public String handleException() {
+    return "error";
   }
 
   @GetMapping("/admin/")
@@ -22,4 +28,5 @@ public class IndexController {
   public String admin() {
     return "<h1>Admin section</h1>";
   }
+
 }

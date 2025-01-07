@@ -1,6 +1,8 @@
 package com.example.ppro_projekt.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -12,6 +14,8 @@ public class Jidelnicek {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id = -1;
 
+    @NotBlank(message = "Název musí být vyplněn")
+    @Size(min = 1, max = 50)
     private String nazev;
 
     private String zamereni;
